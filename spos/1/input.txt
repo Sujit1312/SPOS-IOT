@@ -1,0 +1,8 @@
+start 100
+mover ax, ='5'
+mover bx, ='8'
+add ax, bx
+ltorg
+ds 1
+dc '10'
+end
