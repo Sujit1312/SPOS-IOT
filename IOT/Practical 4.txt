@@ -1,0 +1,36 @@
+from picamera import PiCamera
+from time import sleep
+
+# Initialize the PiCamera
+camera = PiCamera()
+
+# Capture an image
+def capture_image():
+    camera.start_preview()
+    sleep(2)  # Let the camera adjust to lighting
+    camera.capture('/home/pi/image.jpg')  # Save the image to file
+    print("Image captured and saved as image.jpg")
+    camera.stop_preview()
+
+# Record a video
+def record_video(duration):
+    camera.start_preview()
+    camera.start_recording('/home/pi/video.h264')  # Save the video to file
+    print(f"Recording video for {duration} seconds...")
+    sleep(duration)
+    camera.stop_recording()
+    print("Video recording stopped and saved as video.h264")
+    camera.stop_preview()
+
+# Main function
+if __name__ == "__main__":
+    try:
+        # Capture an image
+        capture_image()
+        
+        # Record a video for 10 seconds
+        record_duration = 10
+        record_video(record_duration)
+        
+    finally:
+        camera.close()

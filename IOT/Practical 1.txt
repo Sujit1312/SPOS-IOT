@@ -1,0 +1,27 @@
+Arduino Code:
+
+void setup()
+{ // put your setup code here, to run once: 
+pinMode(13,OUTPUT);
+}
+void loop()
+
+{ // put your main code here, to run repeatedly: 
+digitalWrite(13,LOW);
+delay(1000); 
+digitalWrite(13,HIGH); 
+delay(1000);
+}
+
+
+Raspberry Pi Code:
+import RPi.GPIO as GPIO 
+import time 
+GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False) 
+GPIO.setup(3,GPIO.OUT)
+while True: 
+	GPIO.output(3,GPIO.HIGH)
+	time.sleep(1) 
+	GPIO.output(3,GPIO.LOW)
+	time.sleep(1)
